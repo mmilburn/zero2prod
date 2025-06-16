@@ -44,7 +44,7 @@ async fn subscribe_returns_a_200_for_valid_form_data() {
         .expect("Failed to execute request.");
     assert!(response.status().is_success());
     assert_eq!(200, response.status().as_u16());
-    
+
     let saved = sqlx::query!("select email, name from subscriptions",)
         .fetch_one(&mut connection)
         .await
